@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+	<script src="/js/leaflet-0.7.2/leaflet.ajax.min.js"></script>
+	<style>
+		#map {position: absolute; top: 0; bottom: 0; left: 0; right: 0;}
+	</style>
+</head>
+<body>
+	<div id = "map"></div>
+	<script>
+		var map = L.map('map').setView([0, 0], 1);
+
+		L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=AlsbYjwxK73zIwpCFLNF', {attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+		}).addTo(map);
+
+		var marker = L.marker([45.5272, -122.5063]).addTo(map);
+
+		var geoJSON = {
+"type": "FeatureCollection",
+"name": "GE",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -122.510622557018564, 45.526461734633543 ], [ -122.510608235534519, 45.526721455073904 ], [ -122.510591630825246, 45.527000643257786 ], [ -122.510497537472517, 45.527299217976648 ], [ -122.510303815863949, 45.527582280857054 ], [ -122.509888698131292, 45.528020443876599 ], [ -122.509440756735899, 45.528473186088767 ], [ -122.508547267733007, 45.529481043241589 ], [ -122.508335253393341, 45.52985235448245 ], [ -122.508289821749116, 45.530404012371179 ], [ -122.508274677867703, 45.531029925346495 ], [ -122.508304965630515, 45.531602788744273 ], [ -122.508350397274739, 45.531984694434499 ], [ -122.508549627697931, 45.532561730359078 ], [ -122.509030031784775, 45.533678446147057 ], [ -122.503528588446244, 45.533665237504501 ], [ -122.503528588446244, 45.533444210227657 ], [ -122.50354872876963, 45.533307831261787 ], [ -122.503663977386836, 45.531822868428335 ], [ -122.503886713799204, 45.529026967083787 ], [ -122.504024508136681, 45.527490987312476 ], [ -122.504091426861493, 45.526440060677722 ], [ -122.510622557018564, 45.526461734633543 ] ] ] ] } }
+]
+};
+
+L.geoJSON(geoJSON).addTo(map);
+
+	</script>
+</body>
+</html>
